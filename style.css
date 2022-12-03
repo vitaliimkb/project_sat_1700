@@ -78,8 +78,30 @@ header {
     background: lightgray;
 }
 
+.hide {
+    display: none;
+}
 
+#cart-products {
+    border: 1px solid black;
+    border-radius: 15px;
+    position: absolute;
+    top: 60px;
+    left: -300px;
+    right: 0;
+    padding: 10px;
+    background: white;
+}
 
+#cart-products::before {
+    content: "";
+    border: transparent solid 16px;
+    border-bottom: solid black 16px;
+    position: relative;
+    left: 295px;
+    top: -40px;
+    z-index: -1;
+}
 
 
 
