@@ -1,12 +1,15 @@
 let productsGrid = document.getElementById("products-grid");
 let productsArray = [];
-let url = "https://raw.githubusercontent.com/vitaliimkb/project_sat_1700/main/db.json"
+
 let xhr = new XMLHttpRequest();
-xhr.open("GET", url);
-xhr.responseType = "json";
+xhr.open("GET", "https://sat1700-fccf.restdb.io/rest/product");
+xhr.setRequestHeader("content-type", "application/json");
+xhr.setRequestHeader("x-apikey", "6394acbcf43a573dae09544e");
+xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send();
 xhr.onload = function () {
-    let products = xhr.response.products;
+    let products = JSON.parse(xhr.response);
+    console.log(products);
     productsArray = products;
     productsGrid.innerHTML = null;
     for (const product of products) {
@@ -32,12 +35,24 @@ function openCart() {
 
 let cart = [];
 
+if (localStorage.getItem("cart")) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    showCartProducts();
+}
+
 function addProductToCart(id) {
     let product = productsArray.find(function(p) {
         return p.id == id;
     });
     cart.push(product);
     showCartProducts();
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    document.getElementById("cart-button").classList.add("active");
+    setTimeout(function() {
+        document.getElementById("cart-button").classList.remove("active");
+    }, 500);
 }
 
 function showCartProducts() {
@@ -66,3 +81,4 @@ function buyAll() {
     localStorage.setItem("cart", "[]");
     cartProd.innerHTML = "Money wa withdraw from your card";
 }
+

@@ -103,7 +103,41 @@ header {
     z-index: -1;
 }
 
+#cart-products p {
+    line-height: 30px;
+    margin: 10px 0;
+}
 
+#cart-products p img {
+    max-width: 64px;
+    max-height: 64px;
+    float: left;
+    margin-right: 10px;
+}
+
+#cart-products p::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+#cart-products button {
+    border: 1px solid black;
+    margin: 5px 0;
+    padding: 5px;
+}
+
+#cart-button.active {
+    background: lightgreen;
+}
+
+.product-desc span {
+    color: initial !important;
+    font-family: initial !important;
+    background: initial !important;
+    font-size: initial !important;
+    white-space: initial !important;
+}
 
 @media screen and (max-width: 1000px) {
     #products-grid {
