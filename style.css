@@ -132,11 +132,20 @@ header {
 }
 
 .product-desc span {
-    color: initial !important;
+    color: white !important;
     font-family: initial !important;
     background: initial !important;
     font-size: initial !important;
     white-space: initial !important;
+    text-transform: capitalize;
+}
+
+.product-name, .product-desc {
+    text-transform: capitalize;
+}
+
+.card-img-top {
+    width: 100px;
 }
 
 @media screen and (max-width: 1000px) {
